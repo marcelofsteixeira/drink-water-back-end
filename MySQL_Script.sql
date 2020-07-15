@@ -28,6 +28,7 @@ create table hist_historico_consumo(
 	hist_datahora datetime not null,
 	hist_consumo_ml bigint not null,
 	hist_observacao varchar(50),
+        usr_id bigint unique not null,
 	foreign key hist_usr_fk (usr_id) references usr_usuario(usr_id) on delete restrict on update cascade
 );
 
