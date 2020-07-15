@@ -16,8 +16,8 @@ create table aut_autorizacao(
 );
 
 create table uau_usuario_autorizacao(
-	usr_id bigint unsigned not null,
-      aut_id bigint unsigned not null,
+      usr_id bigint unique not null,
+      aut_id bigint unique not null,
       primary key (usr_id, aut_id),
       foreign key aut_usuario_fk (usr_id) references usr_usuario (usr_id) on delete restrict on update cascade,
       foreign key aut_autorizacao_fk (aut_id) references aut_autorizacao (aut_id) on delete restrict on update cascade
@@ -28,6 +28,7 @@ create table hist_historico_consumo(
 	hist_datahora datetime not null,
 	hist_consumo_ml bigint not null,
 	hist_observacao varchar(50),
+        usr_id bigint unique not null,
 	foreign key hist_usr_fk (usr_id) references usr_usuario(usr_id) on delete restrict on update cascade
 );
 
